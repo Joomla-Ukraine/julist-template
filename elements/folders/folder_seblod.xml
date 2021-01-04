@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cck type="folders">
+	<author>Joomla! Ukraine</author>
+	<authorEmail>denys@joomla-ua.org</authorEmail>
+	<authorUrl>https://joomla-ua.org</authorUrl>
+	<copyright>Copyright (C) 2017-2021 Joomla! Ukraine. All Rights Reserved.</copyright>
+	<license>GNU General Public License version 2 or later.</license>
+	<description>Template JUList for SEBLOD CCK - https://joomla-ua.org</description>
+	<folder>
+		<id />
+		<asset_id />
+		<parent_id />
+		<path>seblod</path>
+		<title>SEBLOD</title>
+		<name>seblod</name>
+		<color>#184d9d</color>
+		<introchar />
+		<colorchar>#ffffff</colorchar>
+		<elements>type,field,search,template</elements>
+		<icon_path />
+		<depth />
+		<lft />
+		<rgt />
+		<description />
+		<app />
+		<featured>0</featured>
+		<home>0</home>
+		<published>1</published>
+		<checked_out>0</checked_out>
+		<checked_out_time>0000-00-00 00:00:00</checked_out_time>
+	</folder>
+	<acl>{&quot;core.create&quot;:[],&quot;core.delete&quot;:[],&quot;core.delete.own&quot;:[],&quot;core.edit&quot;:[],&quot;core.edit.state&quot;:[],&quot;core.edit.own&quot;:[]}</acl>
+</cck>

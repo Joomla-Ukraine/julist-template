@@ -1,0 +1,115 @@
+<project name="julist" default="dist" basedir=".">
+
+    <property name="VERSION" value="1.9.0" />
+
+    <tstamp>
+        <format property="DATE" pattern="%d.%m.%Y" />
+    </tstamp>
+
+    <property name="build" value=".build" />
+    <property name="temp" value=".temp" />
+    <property name="dist" value="dist" />
+
+    <property name="tpl_pkg" value="pkg_ju_list" />
+    <property name="tpl_name" value="tpl_ju_list" />
+
+    <property name="filename"  value="tpl_ju_list_v${VERSION}.zip" />
+
+    <target name="init" depends="clean">
+        <mkdir dir="${build}" />
+        <mkdir dir="${temp}" />
+        <mkdir dir="${dist}" />
+    </target>
+
+    <target name="temp">
+
+        <copy todir="${temp}/extensions/${tpl_name}">
+            <fileset dir="extensions/${tpl_name}">
+                <include name="**" />
+            </fileset>
+        </copy>
+
+        <copy todir="${build}/content">
+            <fileset dir="content">
+                <include name="**" />
+            </fileset>
+        </copy>
+
+        <copy todir="${build}/elements">
+            <fileset dir="elements">
+                <include name="**" />
+            </fileset>
+        </copy>
+
+        <copy todir="${build}/languages">
+            <fileset dir="languages">
+                <include name="**" />
+            </fileset>
+        </copy>
+
+        <copy todir="${build}/sql">
+            <fileset dir="sql">
+                <include name="**" />
+            </fileset>
+        </copy>
+
+        <copy file="extensions/plg_system_blank.zip" todir="${build}/extensions" />
+        <copy file="pkg_script.php" todir="${build}" />
+
+    </target>
+
+    <target name="replace">
+
+        <copy file="${tpl_pkg}.xml" todir="${build}">
+            <filterchain>
+                <replacetokens>
+                    <token key="version" value="${VERSION}" />
+                    <token key="date" value="${DATE}" />
+                </replacetokens>
+            </filterchain>
+        </copy>
+
+        <!---->
+
+        <delete file="${temp}/extensions/${tpl_name}/templateDetails.xml" />
+
+	    <copy file="extensions/${tpl_name}/templateDetails.xml" todir="${temp}/extensions/${tpl_name}">
+            <filterchain>
+                <replacetokens>
+                    <token key="version" value="${VERSION}" />
+                    <token key="date" value="${DATE}" />
+                </replacetokens>
+            </filterchain>
+        </copy>
+
+    </target>
+
+    <target name="pack-plugins">
+
+        <mkdir dir="${build}/extensions" />
+
+        <zip destfile="${build}/extensions/${tpl_name}.zip" description="${tpl_name}">
+            <fileset dir="${temp}/extensions/${tpl_name}" />
+        </zip>
+
+    </target>
+
+    <target name="dist" depends="init, temp, replace, pack-plugins">
+
+        <zip destfile="${dist}/${filename}">
+            <fileset dir="${build}/">
+                <include name="**/**" />
+            </fileset>
+        </zip>
+
+        <delete dir="${build}" />
+        <delete dir="${temp}" />
+
+    </target>
+
+    <target name="clean">
+        <delete dir="${build}" />
+        <delete dir="${temp}" />
+    </target>
+
+</project>

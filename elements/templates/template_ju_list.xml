@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cck type="templates">
+	<author>Joomla! Ukraine</author>
+	<authorEmail>denys@joomla-ua.org</authorEmail>
+	<authorUrl>https://joomla-ua.org</authorUrl>
+	<copyright>Copyright (C) 2017-2021 Joomla! Ukraine. All Rights Reserved.</copyright>
+	<license>GNU General Public License version 2 or later.</license>
+	<description>Template JUList for SEBLOD CCK - https://joomla-ua.org</description>
+	<template>
+		<id />
+		<title>JUList</title>
+		<name>ju_list</name>
+		<folder>seblod/templates/ju_list</folder>
+		<mode>2</mode>
+		<description />
+		<featured>0</featured>
+		<options />
+		<published>1</published>
+		<checked_out>0</checked_out>
+		<checked_out_time>0000-00-00 00:00:00</checked_out_time>
+	</template>
+</cck>
