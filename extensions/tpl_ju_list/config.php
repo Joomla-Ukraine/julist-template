@@ -10,11 +10,13 @@
  * @license          GNU General Public License version 2 or later; see _LICENSE.php
  */
 
+use Joomla\CMS\Factory;
+
 defined('_JEXEC') or die;
 
 global $user;
 
-$app      = JFactory::getApplication();
+$app      = Factory::getApplication();
 $path_lib = JPATH_SITE . '/libraries/cck/rendering/rendering.php';
 $user     = JCck::getUser();
 
@@ -25,4 +27,4 @@ if(!file_exists($path_lib))
 	die;
 }
 
-require_once($path_lib);
+require_once $path_lib;

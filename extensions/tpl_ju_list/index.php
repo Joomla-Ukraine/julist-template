@@ -12,6 +12,7 @@
 
 use Joomla\CMS\Helper\ModuleHelper;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
 
 defined('_JEXEC') or die;
 
@@ -43,10 +44,10 @@ $auto_clean       = (int) $cck->getStyleParam('auto_clean', 0);
 $loader_div = (int) $cck->getStyleParam('loader_div', 0);
 
 // Ads
-$ads       = (int) $cck->getStyleParam('ads', 0);
-$ads_count = (int) $cck->getStyleParam('ads_count', 3);
-$ads_class = trim($cck->getStyleParam('ads_class'));
-$ads_file  = trim($cck->getStyleParam('ads_file', 'ads.php'));
+$ads              = (int) $cck->getStyleParam('ads', 0);
+$ads_count        = (int) $cck->getStyleParam('ads_count', 3);
+$ads_class        = trim($cck->getStyleParam('ads_class'));
+$ads_file         = trim($cck->getStyleParam('ads_file', 'ads.php'));
 $mod_top          = (int) $cck->getStyleParam('mod_top', 0);
 $mod_top_position = trim($cck->getStyleParam('mod_top_position'));
 
@@ -254,7 +255,7 @@ else
 	}
 	else
 	{
-		echo JText::_('COM_CCK_NOT_FOUND_HTML');
+		echo Text::_('COM_CCK_NOT_FOUND_HTML');
 	}
 }
 
@@ -275,7 +276,7 @@ if($loader_div && $count > 1)
 		<div class="loader uk-text-center">
 			<span data-uk-spinner="ratio: 3"></span>
 		</div>
-		<div class="no-more uk-text-center uk-text-muted" hidden><?php echo JText::_('COM_CCK_NOT_FOUND'); ?></div>
+		<div class="no-more uk-text-center uk-text-muted" hidden><?php echo Text::_('COM_CCK_NOT_FOUND'); ?></div>
 	</div>
 	<?php
 }
