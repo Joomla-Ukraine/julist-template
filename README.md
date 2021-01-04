@@ -1,5 +1,4 @@
-# Admin template (Blue version)
-JUList template for SEBLOD CCK.
+# JUList template for SEBLOD CCK
 
 **Display list items with many options:**
 * Add module positions
