@@ -1,18 +1,18 @@
 <?php
 /**
-* @version 			SEBLOD 3.x More
-* @package			SEBLOD (App Builder & CCK) // SEBLOD nano (Form Builder)
-* @url				https://www.seblod.com
-* @editor			Octopoos - www.octopoos.com
-* @copyright		Copyright (C) 2009 - 2018 SEBLOD. All Rights Reserved.
-* @license 			GNU General Public License version 2 or later; see _LICENSE.php
-**/
+ * JU List
+ *
+ * @package          Joomla.Site
+ * @subpackage       JU List
+ *
+ * @author           Denys Nosov, denys@joomla-ua.org
+ * @copyright        2017-2021 (C) Joomla! Ukraine, http://joomla-ua.org. All rights reserved.
+ * @license          GNU General Public License version 2 or later; see _LICENSE.php
+ */
 
-defined( '_JEXEC' ) or die;
+defined('_JEXEC') or die;
 
-// Script
 class pkg_ju_listInstallerScript extends JCckInstallerScriptApp
 {
-	protected $template_placeholder	=	'ju_list';
+	protected $template_placeholder = 'ju_list';
 }
-?>

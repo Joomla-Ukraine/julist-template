@@ -24,7 +24,7 @@ if($cck->initialize() === false)
 	return;
 }
 
-// -- Prepare
+// Prepare
 $attributes       = $cck->item_attributes ? ' ' . $cck->item_attributes : '';
 $class            = trim($cck->getStyleParam('class'));
 $custom_attr      = trim($cck->getStyleParam('attributes'));
@@ -42,29 +42,27 @@ $auto_clean       = (int) $cck->getStyleParam('auto_clean', 0);
 
 $loader_div = (int) $cck->getStyleParam('loader_div', 0);
 
-// -- Ads
+// Ads
 $ads       = (int) $cck->getStyleParam('ads', 0);
 $ads_count = (int) $cck->getStyleParam('ads_count', 3);
 $ads_class = trim($cck->getStyleParam('ads_class'));
 $ads_file  = trim($cck->getStyleParam('ads_file', 'ads.php'));
-
-// -- Ads
 $mod_top          = (int) $cck->getStyleParam('mod_top', 0);
 $mod_top_position = trim($cck->getStyleParam('mod_top_position'));
 
-// -- DateTime
+// DateTime
 $datetime           = (int) $cck->getStyleParam('use_dt', 0);
 $datetime_icon      = trim($cck->getStyleParam('icon_dt'));
 $datetime_class     = trim($cck->getStyleParam('class_dt'));
 $datetime_datefield = trim($cck->getStyleParam('datefield_dt'));
 
-// -- Alphabetic
+// Alphabetic
 $datetime           = (int) $cck->getStyleParam('use_dt', 0);
 $datetime_icon      = trim($cck->getStyleParam('icon_dt'));
 $datetime_class     = trim($cck->getStyleParam('class_dt'));
 $datetime_datefield = trim($cck->getStyleParam('datefield_dt'));
 
-/* Auto clean */
+// Auto clean
 $isRaw = ($count == 1) ? $auto_clean : 0;
 if($auto_clean == 2)
 {
@@ -78,21 +76,21 @@ if($cck->isGoingtoLoadMore())
 	$class = trim($class . ' ' . 'cck-loading-more');
 }
 
+// CSS class
 $class = str_replace('$total', $count, $class);
 $class = $class ? ' class="' . $class . '"' : '';
-
 if($id_class && !$isMore)
 {
 	echo '<div class="' . trim($cck->id_class) . '">';
 }
 
+// Raw
 if(!($isRaw || $isMore || $display_mode_tpl) && $datetime == '0' && $count > 0)
 {
 	echo '<' . $tags[ 0 ] . $class . $custom_attr . '>';
 }
 
-$html = '';
-
+// Module
 if(($mod_top == 1) && $mods = ModuleHelper::getModules($mod_top_position))
 {
 	foreach($mods as $mod)
@@ -100,6 +98,8 @@ if(($mod_top == 1) && $mods = ModuleHelper::getModules($mod_top_position))
 		echo ModuleHelper::renderModule($mod, [ 'style' => 'raw' ]);
 	}
 }
+
+$html = '';
 
 if($count)
 {
@@ -126,7 +126,6 @@ if($count)
 		if($display_mode_tpl == 1)
 		{
 			$tmpl = $cck->path . '/positions/' . $cck->type . '/default.php';
-
 			$html = $tmpl . ' not found';
 			if(is_file($tmpl))
 			{
@@ -141,7 +140,6 @@ if($count)
 			foreach($items as $item)
 			{
 				$row = $item->renderPosition('element');
-
 				if($datetime == '1')
 				{
 					$_ds = $cck->getItems();
