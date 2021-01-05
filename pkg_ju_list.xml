@@ -3,8 +3,12 @@
 	<name>pkg_ju_list</name>
 	<packagename>ju_list</packagename>
 	<packager>Joomla! Ukraine</packager>
-	<packagerurl>https://joomla-ua.org</packagerurl>
 	<copyright>Copyright (C) 2017-2021 Joomla! Ukraine. All Rights Reserved.</copyright>
+	<packageremail>denys@joomla-ua.org</packageremail>
+    <packagerurl>https://joomla-ua.org</packagerurl>
+    <author>Denys Nosov, Joomla! Ukraine</author>
+    <authorEmail>denys@joomla-ua.org</authorEmail>
+    <authorUrl>https://joomla-ua.org</authorUrl>
 	<license>GNU General Public License version 2 or later.</license>
 	<creationDate>@date@</creationDate>
 	<description>Template JUList for SEBLOD CCK - https://joomla-ua.org</description>
