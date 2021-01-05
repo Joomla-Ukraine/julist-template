@@ -29,5 +29,5 @@
 		<checked_out>0</checked_out>
 		<checked_out_time>0000-00-00 00:00:00</checked_out_time>
 	</folder>
-	<acl />
+	<acl>{}</acl>
 </cck>
