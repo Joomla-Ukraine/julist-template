@@ -29,5 +29,5 @@
 		<checked_out>0</checked_out>
 		<checked_out_time>0000-00-00 00:00:00</checked_out_time>
 	</folder>
-	<acl>{&quot;core.create&quot;:{&quot;6&quot;:1,&quot;3&quot;:1},&quot;core.delete&quot;:{&quot;6&quot;:1},&quot;core.delete.own&quot;:[],&quot;core.edit&quot;:{&quot;6&quot;:1,&quot;4&quot;:1},&quot;core.edit.state&quot;:{&quot;6&quot;:1,&quot;5&quot;:1},&quot;core.edit.own&quot;:{&quot;6&quot;:1,&quot;3&quot;:1}}</acl>
+	<acl />
 </cck>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="template" version="2.5" method="upgrade">
+<extension type="template" version="3.9" method="upgrade">
     <name>ju_list</name>
     <author>Joomla! Ukraine</author>
     <authorEmail>denys@joomla-ua.org</authorEmail>
