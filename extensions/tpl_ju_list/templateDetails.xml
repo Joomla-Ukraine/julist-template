@@ -52,6 +52,16 @@
                        cck_attributes="data-cck_client_item='0=0,1=1,2=0'"
                 />
 
+                <field name="list_display_tpl"
+                       type="list"
+                       default="0"
+                       label="Use TPL Standard (List View - No Position)"
+                       class="inputbox"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
                 <field name="tag"
                        type="list"
                        default="ul_li"
