@@ -10,9 +10,11 @@
  * @license          GNU General Public License version 2 or later; see _LICENSE.php
  */
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ModuleHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Layout\FileLayout;
 
 defined('_JEXEC') or die;
 
@@ -24,6 +26,9 @@ if($cck->initialize() === false)
 {
 	return;
 }
+
+$doc = Factory::getDocument();
+$app = Factory::getApplication();
 
 // Prepare
 $attributes       = $cck->item_attributes ? ' ' . $cck->item_attributes : '';
@@ -40,8 +45,12 @@ $fieldnames       = $cck->getFields('element', '', false);
 $multiple         = count($fieldnames) > 1;
 $count            = count($items);
 $auto_clean       = (int) $cck->getStyleParam('auto_clean', 0);
+$loader_div       = (int) $cck->getStyleParam('loader_div', 0);
 
-$loader_div = (int) $cck->getStyleParam('loader_div', 0);
+$doc->setMetaData('seb_julist_count', ($count ? $count : '-1'));
+
+// Meta Title
+$meta = trim($cck->getStyleParam('meta'));
 
 // Ads
 $ads              = (int) $cck->getStyleParam('ads', 0);
@@ -77,6 +86,17 @@ if($cck->isGoingtoLoadMore())
 	$class = trim($class . ' ' . 'cck-loading-more');
 }
 
+// Title templates
+if($meta)
+{
+	$meta = str_replace('.php', '', $meta);
+
+	echo (new FileLayout($meta, JPATH_ROOT . '/templates/ju_list/includes/meta'))->render([
+		'app' => $app,
+		'doc' => $doc,
+	]);
+}
+
 // CSS class
 $class = str_replace('$total', $count, $class);
 $class = $class ? ' class="' . $class . '"' : '';
@@ -107,11 +127,7 @@ if($count)
 	// ads
 	if($ads == 1)
 	{
-		$ads_tmpl = __DIR__ . '/includes/ads/' . $ads_file;
-
-		ob_start();
-		require_once $ads_tmpl;
-		$ads_html = ob_get_clean();
+		echo (new FileLayout($meta, JPATH_ROOT . '/templates/ju_list/includes/includes/ads/' . $ads_file))->render();
 	}
 
 	// datetime
