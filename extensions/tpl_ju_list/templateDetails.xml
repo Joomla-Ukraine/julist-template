@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="template" version="3.9" method="upgrade">
+<extension type="template"
+           version="3.9"
+           method="upgrade">
     <name>ju_list</name>
     <author>Joomla! Ukraine</author>
     <authorEmail>denys@joomla-ua.org</authorEmail>
@@ -36,7 +38,8 @@
     <config addfieldpath="/libraries/cck/construction/field">
         <fields name="params">
 
-            <fieldset name="style" label="TPL_JU_LIST_LEGEND_STYLE">
+            <fieldset name="style"
+                      label="TPL_JU_LIST_LEGEND_STYLE">
 
                 <field name="cck_client_item"
                        type="hidden"
@@ -105,9 +108,37 @@
                        class="inputbox"
                 />
 
+                <field name="loader_div"
+                       type="list"
+                       default="0"
+                       label="TPL_JU_LIST_LOADER_DIV"
+                       class="inputbox"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
             </fieldset>
 
-            <fieldset name="modules_top" label="TPL_JU_LIST_LEGEND_MODULE_TOP">
+             <fieldset name="newmeta"
+                       label="Мета Tags">
+
+                <field name="meta"
+                       type="filelist"
+                       label="Template for title replace"
+                       directory="/templates/ju_list/includes/meta"
+                       filter="\.php$"
+                       stripext="3"
+                       hide_none="1"
+                       hide_default="1"
+                >
+                    <option value="">JSELECT</option>
+                </field>
+
+            </fieldset>
+
+            <fieldset name="modules_top"
+                      label="TPL_JU_LIST_LEGEND_MODULE_TOP">
 
                 <field name="mod_top"
                        type="list"
@@ -120,15 +151,16 @@
                 </field>
 
                 <field
-                        name="mod_top_position"
-                        type="text"
-                        label="TPL_JU_LIST_MODULE_TOP_POSITION"
-                        directory="templates/ju_list/includes/mods"
+		                name="mod_top_position"
+		                type="text"
+		                label="TPL_JU_LIST_MODULE_TOP_POSITION"
+		                directory="templates/ju_list/includes/mods"
                 />
 
             </fieldset>
 
-            <fieldset name="datetime" label="TPL_JU_LIST_LEGEND_DATETIME">
+            <fieldset name="datetime"
+                      label="TPL_JU_LIST_LEGEND_DATETIME">
 
                 <field name="use_dt"
                        type="list"
@@ -167,7 +199,8 @@
 
             </fieldset>
 
-            <fieldset name="ads" label="TPL_JU_LIST_LEGEND_ADS">
+            <fieldset name="ads"
+                      label="TPL_JU_LIST_LEGEND_ADS">
 
                 <field name="ads"
                        type="list"
