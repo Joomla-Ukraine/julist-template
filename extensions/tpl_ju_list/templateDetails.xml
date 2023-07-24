@@ -6,7 +6,7 @@
     <author>Joomla! Ukraine</author>
     <authorEmail>denys@joomla-ua.org</authorEmail>
     <authorUrl>https://joomla-ua.org</authorUrl>
-    <copyright>Copyright (C) 2017-2021 Joomla! Ukraine. All Rights Reserved.</copyright>
+    <copyright>Copyright (C) 2016-2023 Joomla! Ukraine. All Rights Reserved.</copyright>
     <license>GNU General Public License version 2 or later.</license>
     <creationDate>@date@</creationDate>
     <description>Template JUList for SEBLOD CCK - https://joomla-ua.org</description>
@@ -51,7 +51,7 @@
                        construction="core_list_display"
                        default="0"
                        label="TPL_JU_LIST_DISPLAY"
-                       class="inputbox"
+                       class="inputbox w-75"
                        cck_attributes="data-cck_client_item='0=0,1=1,2=0'"
                 />
 
@@ -59,18 +59,26 @@
                        type="list"
                        default="0"
                        label="Use TPL Standard (List View - No Position)"
-                       class="inputbox"
+                       class="inputbox w-50"
                 >
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
+
+                 <field name="app"
+                        type="cck"
+                        construction="core_dev_text"
+                        default=""
+                        label="Aplication folder"
+                        class="inputbox w-75"
+                 />
 
                 <field name="tag"
                        type="list"
                        default="ul_li"
                        label="TPL_JU_LIST_TAG"
                        description="TPL_JU_LIST_TAG_DESC"
-                       class="inputbox"
+                       class="inputbox w-75"
                 >
                     <option value="div_article">COM_CCK_DIV_ARTICLE</option>
                     <option value="div_div">COM_CCK_DIV_DIV</option>
@@ -84,7 +92,7 @@
                        construction="core_dev_text"
                        default=""
                        label="TPL_JU_LIST_CLASS"
-                       class="inputbox"
+                       class="inputbox w-75"
                 />
 
                 <field name="auto_clean"
@@ -92,7 +100,7 @@
                        default="0"
                        label="TPL_JU_LIST_AUTO_CLEAN"
                        description="TPL_JU_LIST_AUTO_CLEAN_DESC"
-                       class="inputbox"
+                       class="inputbox w-25"
                 >
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
@@ -105,14 +113,14 @@
                        default=""
                        label="TPL_JU_LIST_CUSTOM_ATTRIBUTES"
                        cck_rows="1"
-                       class="inputbox"
+                       class="inputbox w-75"
                 />
 
                 <field name="loader_div"
                        type="list"
                        default="0"
                        label="TPL_JU_LIST_LOADER_DIV"
-                       class="inputbox"
+                       class="inputbox w-25"
                 >
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
@@ -120,17 +128,18 @@
 
             </fieldset>
 
-             <fieldset name="newmeta"
-                       label="Мета Tags">
+            <fieldset name="newmeta"
+                      label="Мета-теги">
 
                 <field name="meta"
                        type="filelist"
-                       label="Template for title replace"
+                       label="Файл замены заголовка"
                        directory="/templates/ju_list/includes/meta"
                        filter="\.php$"
                        stripext="3"
                        hide_none="1"
                        hide_default="1"
+                       class="inputbox w-75"
                 >
                     <option value="">JSELECT</option>
                 </field>
@@ -144,17 +153,18 @@
                        type="list"
                        default="0"
                        label="TPL_JU_LIST_MODULE_TOP"
-                       class="inputbox"
+                       class="inputbox w-25"
                 >
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
                 </field>
 
                 <field
-		                name="mod_top_position"
-		                type="text"
-		                label="TPL_JU_LIST_MODULE_TOP_POSITION"
-		                directory="templates/ju_list/includes/mods"
+                        name="mod_top_position"
+                        type="text"
+                        label="TPL_JU_LIST_MODULE_TOP_POSITION"
+                        directory="templates/ju_list/includes/mods"
+                        class="inputbox w-75"
                 />
 
             </fieldset>
@@ -166,7 +176,7 @@
                        type="list"
                        default="0"
                        label="TPL_JU_LIST_USE_DATETIME_OPTION"
-                       class="inputbox"
+                       class="inputbox w-25"
                 >
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
@@ -177,7 +187,7 @@
                        construction="core_dev_text"
                        default="news_created"
                        label="TPL_JU_LIST_DATE_FIELD"
-                       class="inputbox span12"
+                       class="inputbox w-75"
                 />
 
                 <field name="icon_dt"
@@ -185,7 +195,7 @@
                        construction="core_dev_text"
                        default=""
                        label="TPL_JU_LIST_USE_ICON"
-                       class="inputbox span12"
+                       class="inputbox w-75"
                        filter="raw"
                 />
 
@@ -194,7 +204,7 @@
                        construction="core_dev_text"
                        default=""
                        label="TPL_JU_LIST_DATETIME_CLASS"
-                       class="inputbox span12"
+                       class="inputbox w-75"
                 />
 
             </fieldset>
@@ -206,7 +216,8 @@
                        type="list"
                        default="0"
                        label="TPL_JU_LIST_ADS"
-                       class="inputbox"
+                       description="TPL_JU_LIST_ADS_DESC"
+                       class="inputbox w-25"
                 >
                     <option value="0">JNO</option>
                     <option value="1">JYES</option>
@@ -221,6 +232,7 @@
                        stripext="3"
                        hide_none="1"
                        hide_default="1"
+                       class="inputbox w-75"
                 />
 
                 <field name="ads_count"
@@ -228,7 +240,7 @@
                        construction="core_dev_text"
                        default="3"
                        label="TPL_JU_LIST_ADS_COUNT"
-                       class="inputbox"
+                       class="inputbox w-75"
                 />
 
                 <field name="ads_class"
@@ -236,7 +248,7 @@
                        construction="core_dev_text"
                        default=""
                        label="TPL_JU_LIST_ADS_CLASS"
-                       class="inputbox span12"
+                       class="inputbox w-75"
                 />
 
             </fieldset>

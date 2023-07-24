@@ -6,7 +6,7 @@
  * @subpackage       JU List
  *
  * @author           Denys Nosov, denys@joomla-ua.org
- * @copyright        2017-2021 (C) Joomla! Ukraine, http://joomla-ua.org. All rights reserved.
+ * @copyright        2016-2023 (C) Joomla! Ukraine, http://joomla-ua.org. All rights reserved.
  * @license          GNU General Public License version 2 or later; see _LICENSE.php
  */
 

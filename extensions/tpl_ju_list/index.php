@@ -6,17 +6,17 @@
  * @subpackage       JU List
  *
  * @author           Denys Nosov, denys@joomla-ua.org
- * @copyright        2017-2021 (C) Joomla! Ukraine, http://joomla-ua.org. All rights reserved.
+ * @copyright        2016-2018 (C) Joomla! Ukraine, http://joomla-ua.org. All rights reserved.
  * @license          GNU General Public License version 2 or later; see _LICENSE.php
  */
+
+defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ModuleHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\FileLayout;
-
-defined('_JEXEC') or die;
 
 require_once __DIR__ . '/config.php';
 
@@ -27,10 +27,7 @@ if($cck->initialize() === false)
 	return;
 }
 
-$doc = Factory::getDocument();
-$app = Factory::getApplication();
-
-// Prepare
+// -- Prepare
 $attributes       = $cck->item_attributes ? ' ' . $cck->item_attributes : '';
 $class            = trim($cck->getStyleParam('class'));
 $custom_attr      = trim($cck->getStyleParam('attributes'));
@@ -47,32 +44,37 @@ $count            = count($items);
 $auto_clean       = (int) $cck->getStyleParam('auto_clean', 0);
 $loader_div       = (int) $cck->getStyleParam('loader_div', 0);
 
-$doc->setMetaData('seb_julist_count', ($count ? $count : '-1'));
+$doc = Factory::getDocument();
+$app = Factory::getApplication();
+//$doc->setMetaData('seb_julist_count', ($count ? $count : '-1'));
+//$doc->setTitle('ttt');
 
-// Meta Title
+// -- Meta Title
 $meta = trim($cck->getStyleParam('meta'));
 
-// Ads
-$ads              = (int) $cck->getStyleParam('ads', 0);
-$ads_count        = (int) $cck->getStyleParam('ads_count', 3);
-$ads_class        = trim($cck->getStyleParam('ads_class'));
-$ads_file         = trim($cck->getStyleParam('ads_file', 'ads.php'));
+// -- Ads
+$ads       = (int) $cck->getStyleParam('ads', 0);
+$ads_count = (int) $cck->getStyleParam('ads_count', 3);
+$ads_class = trim($cck->getStyleParam('ads_class'));
+$ads_file  = trim($cck->getStyleParam('ads_file', 'ads.php'));
+
+// -- Ads
 $mod_top          = (int) $cck->getStyleParam('mod_top', 0);
 $mod_top_position = trim($cck->getStyleParam('mod_top_position'));
 
-// DateTime
+// -- DateTime
 $datetime           = (int) $cck->getStyleParam('use_dt', 0);
 $datetime_icon      = trim($cck->getStyleParam('icon_dt'));
 $datetime_class     = trim($cck->getStyleParam('class_dt'));
 $datetime_datefield = trim($cck->getStyleParam('datefield_dt'));
 
-// Alphabetic
+// -- Alphabetic
 $datetime           = (int) $cck->getStyleParam('use_dt', 0);
 $datetime_icon      = trim($cck->getStyleParam('icon_dt'));
 $datetime_class     = trim($cck->getStyleParam('class_dt'));
 $datetime_datefield = trim($cck->getStyleParam('datefield_dt'));
 
-// Auto clean
+/* Auto clean */
 $isRaw = ($count == 1) ? $auto_clean : 0;
 if($auto_clean == 2)
 {
@@ -86,7 +88,9 @@ if($cck->isGoingtoLoadMore())
 	$class = trim($class . ' ' . 'cck-loading-more');
 }
 
-// Title templates
+$class = str_replace('$total', $count, $class);
+$class = $class ? ' class="' . $class . '"' : '';
+
 if($meta)
 {
 	$meta = str_replace('.php', '', $meta);
@@ -97,21 +101,30 @@ if($meta)
 	]);
 }
 
-// CSS class
-$class = str_replace('$total', $count, $class);
-$class = $class ? ' class="' . $class . '"' : '';
 if($id_class && !$isMore)
 {
 	echo '<div class="' . trim($cck->id_class) . '">';
 }
 
-// Raw
 if(!($isRaw || $isMore || $display_mode_tpl) && $datetime == '0' && $count > 0)
 {
 	echo '<' . $tags[ 0 ] . $class . $custom_attr . '>';
 }
 
-// Module
+/*
+$app    = Factory::getApplication();
+$doc    = Factory::getDocument();
+$params = $app->getParams();
+if($params->get('show_list_title') !== null && $params->get('show_list_title') == 1)
+{
+	$tag   = $params->get('tag_list_title');
+	$class = trim($params->get('class_list_title', 'uk-article-title'));
+	$class = $class ? ' class="' . $class . '"' : '';
+	echo '<' . $tag . $class . '>' . $params->get('page_title', '') . '</' . $tag . '>';
+}
+*/
+
+$html = '';
 if(($mod_top == 1) && $mods = ModuleHelper::getModules($mod_top_position))
 {
 	foreach($mods as $mod)
@@ -120,14 +133,16 @@ if(($mod_top == 1) && $mods = ModuleHelper::getModules($mod_top_position))
 	}
 }
 
-$html = '';
-
 if($count)
 {
 	// ads
 	if($ads == 1)
 	{
-		echo (new FileLayout($meta, JPATH_ROOT . '/templates/ju_list/includes/includes/ads/' . $ads_file))->render();
+		$ads_tmpl = __DIR__ . '/includes/ads/' . $ads_file;
+
+		ob_start();
+		require_once $ads_tmpl;
+		$ads_html = ob_get_clean();
 	}
 
 	// datetime
@@ -140,16 +155,12 @@ if($count)
 	// modes
 	if($display_mode == 2)
 	{
-		if($display_mode_tpl == 1)
+		if($display_mode_tpl == 1 && $cck->params[ 'app' ])
 		{
-			$tmpl = $cck->path . '/positions/' . $cck->type . '/default.php';
-			$html = $tmpl . ' not found';
-			if(is_file($tmpl))
-			{
-				ob_start();
-				require($tmpl);
-				$html = ob_get_clean();
-			}
+			echo (new FileLayout('seblod.' . $cck->params[ 'app' ] . '.' . $cck->type))->render([
+				'items' => $items,
+				'cck'   => $cck,
+			]);
 		}
 		else
 		{
@@ -157,6 +168,7 @@ if($count)
 			foreach($items as $item)
 			{
 				$row = $item->renderPosition('element');
+
 				if($datetime == '1')
 				{
 					$_ds = $cck->getItems();
